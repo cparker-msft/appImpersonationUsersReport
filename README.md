@@ -21,5 +21,8 @@ Step 2: Run the script from the local directory in a PowerShell terminal:
 PS C:\Users\MyUser\Scripts> .\appImpersonationUsersReport.ps1
 ```
 
+## Execution policy issues
+Depending on your execution policy, you may encounter an error when attempting to run the script. For more info on how to resolve this, please reference: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-executionpolicy?view=powershell-7.4
+
 ## Disclaimer
 THIS SAMPLE CODE AND ANY RELATED INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.
