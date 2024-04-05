@@ -156,12 +156,31 @@ Write-Host
 Write-Host "Filtering events that do not indicate Impersonation was being used." -ForegroundColor Yellow
 Write-Host
 
+# Well-known Microsoft App IDs
+$1pId =
+'00000003-0000-0000-c000-000000000000',
+'00000002-0000-0ff1-ce00-000000000000',
+'13937bba-652e-4c46-b222-3003f4d1ff97',
+'a3883eba-fbe9-48bd-9ed3-dca3e0e84250',
+'99b904fd-a1fe-455c-b86c-2f9fb1da7687',
+'00000007-0000-0ff1-ce00-000000000000',
+'51be292c-a17e-4f17-9a7e-4b661fb16dd2',
+'fb78d390-0c51-40cd-8e17-fdbfab77341b',
+'47629505-c2b6-4a80-adb1-9b3a3d233b7b',
+'26abc9a8-24f0-4b11-8234-e86ede698878',
+'a970bac6-63fe-4ec5-8884-8536862c42d4',
+'497effe9-df71-4043-a8bb-14cf78c4b63b'
+
 $filteredData = @()
 foreach ($possibleHit in $possibleHits) 
 {
     if ($possibleHit.ImpersonationUser -ne $possibleHit.MailboxOwnerUPN) 
     {
-        $filteredData += $possibleHit
+        # Exclude Microsoft apps from the results
+        if ($1pID -notcontains [string]$possibleHit.AppId)
+        {
+            $filteredData += $possibleHit
+        }
     }
 }
 
