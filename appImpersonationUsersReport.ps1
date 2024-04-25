@@ -57,7 +57,7 @@ Write-Host "Listing users with ApplicationImpersonation RBAC role assignemnt:" -
 
 $roleUsers = Get-ManagementRoleAssignment -Role ApplicationImpersonation -GetEffectiveUsers | Where-Object {$_.EffectiveUserName -notlike "All Group Members"}
 
-Write-LogFile "Effecitve User Names: $($roleUsers.EffectiveUserName)"
+Write-LogFile "Effective User Names: $($roleUsers.EffectiveUserName)"
 $roleUsers | Format-Table -AutoSize | Out-Host
 
 # For each user, get their UPN and SID
